@@ -70,14 +70,14 @@ jobs:
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
         run: |
-          heroku stack:set container -a front-app
+          heroku stack:set container -a front-mel
           if [ $? -ne 0 ]; then
-            echo "Error: Falló la configuración del stack container para front-app"
+            echo "Error: Falló la configuración del stack container para front-mel"
             exit 1
           fi
-          heroku stack:set container -a back-app
+          heroku stack:set container -a back-mel
           if [ $? -ne 0 ]; then
-            echo "Error: Falló la configuración del stack container para back-app"
+            echo "Error: Falló la configuración del stack container para back-mel"
             exit 1
           fi
 
@@ -95,14 +95,14 @@ jobs:
       # Pull images from DockerHub
       - name: Pull images from DockerHub
         run: |
-          docker pull sebastianwebapp/heroku1:latest
+          docker pull melany555/heroku1:latest
           if [ $? -ne 0 ]; then
-            echo "Error: Falló la descarga de la imagen sebastianwebapp/heroku1:latest"
+            echo "Error: Falló la descarga de la imagen melany555/heroku1:latest"
             exit 1
           fi
-          docker pull sebastianwebapp/heroku2:latest
+          docker pull melany555/heroku2:latest
           if [ $? -ne 0 ]; then
-            echo "Error: Falló la descarga de la imagen sebastianwebapp/heroku2:latest"
+            echo "Error: Falló la descarga de la imagen melany555/heroku2:latest"
             exit 1
           fi
 
@@ -111,13 +111,13 @@ jobs:
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
         run: |
-          docker tag sebastianwebapp/heroku1:latest registry.heroku.com/front-app/web
-          docker push registry.heroku.com/front-app/web
+          docker tag melany555/heroku1:latest registry.heroku.com/front-mel/web
+          docker push registry.heroku.com/front-mel/web
           if [ $? -ne 0 ]; then
             echo "Error: Falló el envío de la imagen front a Heroku"
             exit 1
           fi
-          heroku container:release web --app front-app
+          heroku container:release web --app front-mel
           if [ $? -ne 0 ]; then
             echo "Error: Falló la liberación del contenedor front en Heroku"
             exit 1
@@ -128,13 +128,13 @@ jobs:
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
         run: |
-          docker tag sebastianwebapp/heroku2:latest registry.heroku.com/back-app/web
-          docker push registry.heroku.com/back-app/web
+          docker tag melany555/heroku2:latest registry.heroku.com/back-mel/web
+          docker push registry.heroku.com/back-mel/web
           if [ $? -ne 0 ]; then
             echo "Error: Falló el envío de la imagen backend a Heroku"
             exit 1
           fi
-          heroku container:release web --app back-app
+          heroku container:release web --app back-mel
           if [ $? -ne 0 ]; then
             echo "Error: Falló la liberación del contenedor backend en Heroku"
             exit 1

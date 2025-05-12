@@ -5,7 +5,7 @@ async function createDatabase(){
     try {
         
         // Crear base de datos
-        await pool.query(`CREATE DATABASE IF NOT EXISTS bixzpa0ud4u8r0nv`);
+        await pool.query(`CREATE DATABASE IF NOT EXISTS nc8f4nwj94xj2n8y`);
         console.log("Base de datos verificada o creada.");
             
       } catch (error) {
@@ -16,7 +16,7 @@ async function createDatabase(){
 async function createTable() {
     try {
         // Seleccionar la base de datos
-        await pool.query("USE bixzpa0ud4u8r0nv");
+        await pool.query("USE nc8f4nwj94xj2n8y");
     
         // Crear tabla
         const createTableSQL = `CREATE TABLE IF NOT EXISTS personas (

@@ -20,7 +20,7 @@ services:
     build:
       context: ./Front
     container_name: front
-    image: sebastianwebapp/heroku1:latest
+    image: melany555/heroku1:latest
     ports:
       - "80:80"
     depends_on:
@@ -33,7 +33,7 @@ services:
     build:
       context: ./Microservicios/Crud_Mysql
     container_name: crud_mysql
-    image: sebastianwebapp/heroku2:latest
+    image: melany555/heroku2:latest
     ports:
       - "3000:3000"
     depends_on:
